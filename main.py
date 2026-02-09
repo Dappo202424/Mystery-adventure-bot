@@ -192,43 +192,47 @@ def play_round(ronde, nama, nyawa, skor):
 
     # Ronde 4: Riddle dari NPC
     elif ronde == 4:
-        print_dramatis("Seorang NPC tua menantang Anda dengan teka-teki dan pilihan tindakan:")
-        print_dramatis("1. Jawab teka-teki\n2. Tawari NPC bantuan\n3. Lewati (lanjut cepat)")
+        print_dramatis("NPC kuno berdiri di persimpangan; narator mendengarnya berbisik teka-teki yang telah dimulai:")
+        print_dramatis("1. Jawab teka-teki — risiko kegagalan")
+        print_dramatis("2. Tawari bantuan — path hati nurani")
+        print_dramatis("3. Lewati — mengabaikan kesempatan")
         pilihan = input("Pilih aksi (1/2/3): ").lower().strip()
         if pilihan == "1":
             jawaban = input("Jawaban Anda: ").lower().strip()
             if "jam" in jawaban or "waktu" in jawaban:
-                print_dramatis("Benar! NPC memberi Anda berkat.")
+                print_dramatis("Benar! NPC tersenyum — narator mencatat berkah yang diberikan. +25 skor, +10 nyawa.")
                 skor += 25
                 nyawa += 10
             else:
                 damage = random.randint(10,20)
                 nyawa -= damage
-                print_dramatis(f"Salah. NPC kecewa: -{damage} nyawa")
+                print_dramatis(f"Salah — NPC menggeleng, melangkah pergi dengan kecewa. Narator mencatat: -{damage} nyawa")
         elif pilihan == "2":
-            print_dramatis("Anda membantu NPC, mendapatkan informasi berguna.")
+            print_dramatis("Kau memberi NPC sesuatu yang patut dihargai — informasi, kemurahan hati. Narator mencatatnya: +15 skor.")
             skor += 15
         elif pilihan == "3":
-            print_dramatis("Anda melewati NPC, tidak ada yang terjadi tapi Anda kehilangan peluang.")
+            print_dramatis("Kau berlalu begitu saja; narator menulis bahwa peluang entah muncul atau lenyap tanpa bekas.")
         else:
-            print_dramatis("Pilihan tidak dimengerti; NPC bingung.")
+            print_dramatis("NPC bingung mendengarkan pilihan aneh; narator hanya terdiam.")
 
     # Ronde 5: Jembatan Depan API
     elif ronde == 5:
-        print_dramatis("Anda mendekati Jembatan API yang rapuh. Anda bisa mencoba beberapa pendekatan:")
-        print_dramatis("1. Lompat cepat (cek keberuntungan)\n2. Perbaiki perlahan (- waktu, aman)\n3. Memanggil bantuan (butuh skor atau resource)")
+        print_dramatis("Jembatan API terbentang di depan, rapuh, bergetar dengan detak nadi data. Narator melihat tiga jalan:")
+        print_dramatis("1. Lompat — cerita kilat, takdir gelisah")
+        print_dramatis("2. Perbaiki — narasi lambat, aman tapi lelah")
+        print_dramatis("3. Panggil bantuan — sumber daya untuk keselamatan")
         pilihan = input("Pilih aksi (1/2/3): ")
         if pilihan == "1":
             keberuntungan = random.randint(1,100)
             if keberuntungan > 55:
                 skor += 25
-                print_dramatis("Anda melompat dengan sukses! +25 skor")
+                print_dramatis("Melompat! Narator melihat kau terbang melintasi jembatan dengan elegan — +25 skor.")
             else:
                 damage = random.randint(15,35)
                 nyawa -= damage
-                print_dramatis(f"Gagal melompat: -{damage} nyawa")
+                print_dramatis(f"Melompat dan jatuh! Narator menuliskan kesedihan: -{damage} nyawa")
         elif pilihan == "2":
-            print_dramatis("Anda memperbaiki jembatan dengan hati-hati. Aman, tetapi sedikit lelah.")
+            print_dramatis("Perbaikan lambat dan teliti — cerita bertahan. Kelelahan menyentuh (-8 nyawa), namun jembatan kokoh (+5 skor).")
             nyawa -= 8
             skor += 5
         elif pilihan == "3":
